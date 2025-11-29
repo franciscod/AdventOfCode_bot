@@ -77,7 +77,7 @@ procedure:
     in msg join "🎄 *Advent of Code " year " - Leaderboard* 🎄" crlf
 
     for stars from maxStars to -1 step -1 do
-        if peopleInMessage is greater than 20 then
+        if peopleInMessage is greater than 20 or stars is equal to 0 then
             for each name in leaderboard:stars do
                 incr fewStarsPeopleCount
             repeat
@@ -107,7 +107,11 @@ procedure:
         end if
     repeat
 
-    in msg join msg crlf "... and other " fewStarsPeopleCount " busy people. " crlf
+    if peopleInMessage is equal to 0 then
+        in msg join msg crlf "\\*noises of " fewStarsPeopleCount " people waiting for it to start\\* " crlf
+    else
+        in msg join msg crlf "... and other " fewStarsPeopleCount " busy people. " crlf
+    end if
 
     in msg join msg crlf "[Join](https://adventofcode.com/" year "/leaderboard/private) with code: `" leaderboardCode "`" crlf
 end sub
